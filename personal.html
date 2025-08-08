@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shravani Sawant - Web Developer Portfolio</title>
+    <!-- Use Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS from CDN for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for smooth scrolling and general styling */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light background */
+            color: #334155; /* Dark gray text */
+        }
+        /* Style for the fixed navigation bar on scroll */
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        /* Custom button styling */
+        .btn-primary {
+            @apply px-6 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out transform hover:scale-105;
+        }
+        .btn-secondary {
+            @apply px-6 py-3 bg-gray-200 text-indigo-700 font-semibold rounded-full shadow-md hover:bg-gray-300 transition-all duration-300 ease-in-out transform hover:scale-105;
+        }
+        /* Section padding */
+        section {
+            padding: 5rem 1.5rem; /* py-20 px-6 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Fixed Navigation Menu -->
+    <header id="main-nav" class="fixed top-0 left-0 w-full bg-transparent text-gray-800 z-50 transition-all duration-300 ease-in-out">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo/Name -->
+                <div class="flex items-center">
+                    <a href="#home" class="flex-shrink-0 text-2xl font-extrabold text-indigo-600">
+                        Shravani Sawant
+                    </a>
+                </div>
+
+                <!-- Desktop Menu Items -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#home" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Home</a>
+                        <a href="#about" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">About Me</a>
+                        <a href="#skills" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Skills</a>
+                        <a href="#projects" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Projects</a>
+                        <a href="#accomplishments" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Accomplishments</a>
+                        <a href="#contact" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-indigo-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Icon when menu is closed -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Icon when menu is open -->
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu, hidden by default -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg py-2">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block text-gray-700 hover:text-indigo-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Home</a>
+                <a href="#about" class="block text-gray-700 hover:text-indigo-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">About Me</a>
+                <a href="#skills" class="block text-gray-700 hover:text-indigo-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Skills</a>
+                <a href="#projects" class="block text-gray-700 hover:text-indigo-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Projects</a>
+                <a href="#accomplishments" class="block text-gray-700 hover:text-indigo-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Accomplishments</a>
+                <a href="#contact" class="block text-gray-700 hover:text-indigo-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white min-h-screen flex items-center justify-center text-center">
+            <div class="max-w-4xl mx-auto px-6 py-20">
+                <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
+                    <div class="flex-shrink-0 mb-8 md:mb-0">
+                        <!-- Placeholder for your professional photo -->
+                        <img src="https://placehold.co/200x200/6366f1/ffffff?text=Your+Photo" alt="Your Professional Photo" class="rounded-full w-48 h-48 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                            Hi, I'm Shravani Sawant 👋
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-indigo-100 mb-8">
+                            A motivated final-year engineering student actively building technical skills in Web Development and AI/ML.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#projects" class="btn-primary">View My Work</a>
+                            <a href="#contact" class="btn-secondary">Get In Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">About Me</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="text-lg text-gray-700 leading-relaxed">
+                        <p class="mb-4">
+                            Hello! I'm Shravani Sawant, a motivated final-year engineering student passionate about full-stack development, AI/ML, and data structures & algorithms. I'm actively building technical skills and exploring opportunities to learn and grow in a professional environment. I am eager to contribute with a strong work ethic, adaptability, and a willingness to take on challenges.
+                        </p>
+                        <p class="mb-4">
+                            My areas of interest include Full-Stack Development, AI/ML, Web Development, and DSA. I enjoy bringing creative ideas to life through code and am always eager to learn new technologies and improve my craft.
+                        </p>
+                        <p>
+                            Outside of academics and coding, I'm an active NSS Volunteer and have participated in various leadership and disaster management camps, which have honed my soft skills like leadership, teamwork, and communication.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Education & Experience</h3>
+                        <div class="space-y-6">
+                            <!-- Education Entry -->
+                            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                                <h4 class="text-xl font-semibold text-indigo-700">B.E. in Computer Science and Engineering (AI & ML)</h4>
+                                <p class="text-gray-600">Finolex Academy of Management and Technology, Ratnagiri</p>
+                                <p class="text-gray-500 mt-2">Expected Graduation: 2026 | Current CGPA: 8.1</p>
+                            </div>
+                            <!-- Professional Experience Entry 1 -->
+                            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                                <h4 class="text-xl font-semibold text-indigo-700">Web Development & Machine Learning Intern</h4>
+                                <p class="text-gray-600">Prodigy InfoTech, 2025</p>
+                                <p class="text-gray-500 mt-2">Gained practical experience in web development and machine learning projects.</p>
+                            </div>
+                            <!-- Professional Experience Entry 2 -->
+                            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                                <h4 class="text-xl font-semibold text-indigo-700">Generative AI Micro Internship</h4>
+                                <p class="text-gray-600">2024</p>
+                                <p class="text-gray-500 mt-2">Explored and applied concepts in Generative AI.</p>
+                            </div>
+                             <!-- Professional Experience Entry 3 -->
+                            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                                <h4 class="text-xl font-semibold text-indigo-700">IBM SkillsBuild Data Science Micro Internship</h4>
+                                <p class="text-gray-600">2024</p>
+                                <p class="text-gray-500 mt-2">Acquired foundational skills and practical experience in data science.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="bg-gray-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">My Skills</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Languages -->
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=Python" alt="Python Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">Python</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=JS" alt="JavaScript Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">JavaScript</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=Java" alt="Java Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">Java</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=HTML" alt="HTML Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">HTML</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=CSS" alt="CSS Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">CSS</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=SQL" alt="SQL Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">SQL</h3>
+                    </div>
+
+                    <!-- Frameworks & Libraries -->
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=React" alt="React.js Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">React.js</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=Node" alt="Node.js Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">Node.js</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=Firebase" alt="Firebase Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">Firebase</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=Flask" alt="Flask Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">Flask</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=AI/ML" alt="AI/ML Libraries Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">AI/ML Libraries (NLTK, scikit-learn)</h3>
+                    </div>
+
+                    <!-- Tools & Platforms -->
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=Git" alt="Git Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">Git</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=GitHub" alt="GitHub Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">GitHub</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-200">
+                        <img src="https://placehold.co/60x60/ffffff/000000?text=Tailwind" alt="Tailwind CSS Icon" class="mx-auto mb-4 w-16 h-16 object-contain">
+                        <h3 class="text-xl font-semibold text-gray-700">Tailwind CSS</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Project Card 1: Eco-Friendly Shopping Advisor -->
+                    <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/e0e7ff/4338ca?text=Eco-Friendly+Advisor" alt="Eco-Friendly Shopping Advisor Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Eco-Friendly Shopping Advisor</h3>
+                            <p class="text-gray-600 mb-4">
+                                An AI-based shopping advisor that evaluates the eco-friendliness of products via barcode scanning, computes eco-scores, and suggests sustainable alternatives.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">React</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">FastAPI</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Firebase</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">OpenFoodFacts API</span>
+                            </div>
+                            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                                View Project
+                                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project Card 2: Personal Finance Tracker -->
+                    <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/e0e7ff/4338ca?text=Finance+Tracker" alt="Personal Finance Tracker Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Personal Finance Tracker</h3>
+                            <p class="text-gray-600 mb-4">
+                                A web application for tracking income, expenses, and budgets with secure authentication and visual insights using Chart.js.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">React</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Firebase (Auth + Firestore)</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Chart.js</span>
+                            </div>
+                            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                                View Project
+                                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project Card 3: BhoomiCare+ -->
+                    <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/e0e7ff/4338ca?text=BhoomiCare+" alt="BhoomiCare+ Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">BhoomiCare+ - AI-Powered Health & Eco Product Analyzer</h3>
+                            <p class="text-gray-600 mb-4">
+                                An AI-powered tool to analyze health risks, cruelty-free status, and eco-scores of products with barcode scanning and ingredient evaluation. (Major Project - Ongoing)
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">React</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">FastAPI</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Firebase</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">MongoDB</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">BERT/NLP</span>
+                            </div>
+                            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                                View Project
+                                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Add more project cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Accomplishments Section -->
+        <section id="accomplishments" class="bg-gray-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Accomplishments & Certifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Certification 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">IBM SkillsBuild Masterclass</h3>
+                        <p class="text-gray-600 mb-2">Issued by IBM SkillsBuild, 2024</p>
+                        <p class="text-gray-500 text-sm">Completed a masterclass program enhancing various technical skills.</p>
+                    </div>
+                    <!-- Certification 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Generative AI Micro Internship</h3>
+                        <p class="text-gray-600 mb-2">Completed in 2024</p>
+                        <p class="text-gray-500 text-sm">Gained practical experience and knowledge in Generative AI concepts.</p>
+                    </div>
+                    <!-- Certification 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">IBM SkillsBuild Data Science Micro Internship</h3>
+                        <p class="text-gray-600 mb-2">Completed in 2024</p>
+                        <p class="text-gray-500 text-sm">Acquired foundational skills and practical experience in data science.</p>
+                    </div>
+                    <!-- Add more accomplishments/certifications as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-gradient-to-r from-purple-600 to-indigo-700 text-white">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
+                <p class="text-lg text-indigo-100 mb-10">
+                    Have a project in mind or just want to say hello? Feel free to reach out!
+                </p>
+                <form class="space-y-6">
+                    <div>
+                        <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg border border-indigo-400 bg-indigo-500 text-white placeholder-indigo-200 focus:ring-2 focus:ring-white focus:border-transparent transition-colors duration-200">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg border border-indigo-400 bg-indigo-500 text-white placeholder-indigo-200 focus:ring-2 focus:ring-white focus:border-transparent transition-colors duration-200">
+                    </div>
+                    <div>
+                        <textarea placeholder="Your Message" rows="6" class="w-full p-4 rounded-lg border border-indigo-400 bg-indigo-500 text-white placeholder-indigo-200 focus:ring-2 focus:ring-white focus:border-transparent transition-colors duration-200"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full max-w-xs mx-auto">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <p>&copy; 2025 Shravani Sawant. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <!-- Social Media Links -->
+                <a href="https://www.linkedin.com/in/shravani-sawant-4144762b8" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">LinkedIn</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">GitHub</a>
+                <!-- Add other social media links as needed -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Get the navigation bar element
+        const mainNav = document.getElementById('main-nav');
+        // Get the mobile menu button and the mobile menu content
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Add a scroll event listener to the window to change navbar style
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // If scrolled more than 50px
+                mainNav.classList.add('navbar-scrolled');
+            } else {
+                mainNav.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Toggle mobile menu visibility on button click
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Optionally, change the icon of the mobile menu button
+            const iconClosed = mobileNav.querySelector('svg:first-child');
+            const iconOpen = mobileNav.querySelector('svg:last-child');
+            iconClosed.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked (for smooth scrolling)
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                // Reset mobile menu button icon
+                const iconClosed = mobileNav.querySelector('svg:first-child');
+                const iconOpen = mobileNav.querySelector('svg:last-child');
+                iconClosed.classList.remove('hidden');
+                iconOpen.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for desktop navigation links (already handled by html { scroll-behavior: smooth; } but good to have explicit JS for older browsers or more control)
+        document.querySelectorAll('#main-nav .hidden.md\\:block a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default anchor click behavior
+                const targetId = this.getAttribute('href'); // Get the href attribute
+                const targetElement = document.querySelector(targetId); // Find the target element
+                if (targetElement) {
+                    // Scroll to the target element smoothly
+                    window.scrollTo({
+                        top: targetElement.offsetTop - mainNav.offsetHeight, // Adjust for fixed header height
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
